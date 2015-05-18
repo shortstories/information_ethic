@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="container-fluid">
+		<%= nav_bar fixed: :top, brand: "사이버 폭력 자가진단", responsive: true do %>
+	    <%= menu_group do %>
+	        <%= menu_item "진단 결과", "#" %>
+	        <%= menu_item "치료 활동", "#" %>
+	    <% end %>
+      <%= menu_group pull: :right do %>
+          <%= menu_item "회원가입", "#" %>
+      <% end %>
+		<% end %>
+		<%= yield %>
+	</div>
 </body>
 </html>
