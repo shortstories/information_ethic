@@ -5,32 +5,73 @@
 .navbar {
 	background-color: inherit;
 	border: none;
-	a {
-		color: #fff !important;
-	}
-	a:hover {
-		color: green !important;
-	}
+  a {
+	  color: #fff !important;
+  }
+  .nav {
+    a {
+      transition: 0.25s color;
+	  }
+	  a:hover {
+		  color: rgb(94, 219, 91) !important;
+	  }
+  }
 }
 
 .main_bg {
 	background-image: url('main/top.jpg');
 	background-size: cover;
 	.main_bg_shadow {
-		padding-top: 50px;
+		padding-top: 8.5em;
 		background-color: rgba(0, 0, 0, 0.5);
 		.row {
 			.main_bg_content {
-				text-align: center;
-				padding-bottom: 1em;
 				* {
 					color: #fff;
 				}
-				.main_bg_content_button {
-					border: 1px solid #fff;
-				}
+        .row {
+          margin-bottom: 3em;
+          h1 {
+            text-align: center;
+          }
+          p {
+            padding: 0 1em 0 1em;
+          }
+				  .main_bg_content_button {
+				  	display: block;
+            width: 10em;
+            margin: 0 auto;
+            border: 1px solid #fff;
+            border-radius: 0.8em;
+            text-align: center;
+            line-height: 2.8em;
+            transition: 0.25s background;
+				  }
+          .main_bg_content_button:hover {
+            text-decoration: none;
+            background-color: rgba(255, 255, 255, 0.25);
+          }
+        }
 			}
 		}
 	}
 
+}
+
+.main_caption {
+  background-color: #EFF9F6;
+  padding: 1em 0 1em 0;
+  .row {
+    .col-md-5 {
+      height: 10em; 
+      padding: 1em;
+    }
+  }
+}
+
+.main_show {
+  background-color: #003657;
+  .col-md-4 {
+    height: 10em;
+  }
 }
