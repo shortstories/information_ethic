@@ -1,21 +1,29 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.main {
 .navbar {
 	background-color: inherit;
 	border: none;
+  transition: 0.75s background;
   a {
 	  color: #fff !important;
   }
-  .nav {
-    a {
-      transition: 0.25s color;
-	  }
-	  a:hover {
-		  color: rgb(94, 219, 91) !important;
-	  }
+  .navbar-collapse{
+    border: none;
+    .nav {
+      a {
+        transition: 0.25s color;
+	    }
+	    a:hover {
+		    color: rgb(94, 219, 91) !important;
+	    }
+    }
   }
+}
+
+.navbar_scrolled {
+  background-color: #626262;
 }
 
 .main_bg {
@@ -60,18 +68,11 @@
 
 .main_caption {
   background-color: #EFF9F6;
-  padding: 1em 0 1em 0;
+  padding: 3em 0 3em 0;
   .row {
-    .col-md-5 {
-      height: 10em; 
-      padding: 1em;
+    div {
+      padding: 0 2em 0 2em;
     }
   }
 }
-
-.main_show {
-  background-color: #003657;
-  div {
-    height: 10em;
-  }
 }

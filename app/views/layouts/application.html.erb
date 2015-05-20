@@ -5,8 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
 </head>
-<body>
+<body class="<%= params[:controller] %>">
 	<div class="container-fluid">
 		<%= nav_bar fixed: :top, brand: "사이버 폭력 자가진단", responsive: true do %>
 	    <%= menu_group do %>
@@ -15,9 +16,19 @@
 	    <% end %>
       <%= menu_group pull: :right do %>
           <%= menu_item "회원가입", "#" %>
+          <%= menu_item "로그인", "#" %>
       <% end %>
 		<% end %>
-		<%= yield %>
+    <%= yield %>
+    <div class="footer row">
+      <div class="col-md-3 col-md-offset-1 footer_logo">
+        <h1>정보윤리 5조</h1>
+      </div>
+      <div class="col-md-7">
+        <p>Powered by Ohchang Kwon. <a href="mailto:kwonsci@gmail.com">kwonsci@gmail.com</a></p>
+        <p>Copyright(c) Kyungpook National University. Information-ethics 5th group. All rights reserved.</p>
+      </div>
+    </div>
 	</div>
 </body>
 </html>

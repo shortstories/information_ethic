@@ -1,0 +1,17 @@
+.tests {
+  .tests_title {
+    padding: 5em 0 1em 0; 
+  }
+  .tests_items {
+    padding: 0 0 2em 0;
+    div {
+      background-color: #EFF9F6;
+      padding: 2em 0 2em 0;
+      border-radius: 1em;
+      .tests_item {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+}

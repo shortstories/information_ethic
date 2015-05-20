@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 # Use mysql
-gem 'mysql'
+gem 'mysql2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
