@@ -5,7 +5,8 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def index
-    @results = Result.all
+    @results = Result.where("user_id = ?", current_user.id)
+    @result = params[:times] || @results.first
   end
 
   # GET /results/1

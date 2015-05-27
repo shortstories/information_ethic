@@ -13,6 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20150523135038) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", limit: 50, null: false
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "category",   limit: 255
@@ -22,17 +26,24 @@ ActiveRecord::Schema.define(version: 20150523135038) do
   end
 
   create_table "results", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id", limit: 4, null: false
+    t.integer "times",   limit: 4, null: false
+    t.integer "score_1", limit: 4, null: false
+    t.integer "score_2", limit: 4, null: false
+    t.integer "score_3", limit: 4, null: false
+    t.integer "score_4", limit: 4, null: false
+    t.integer "score_5", limit: 4, null: false
   end
 
+  add_index "results", ["user_id"], name: "fgk_user_result_idx", using: :btree
+
   create_table "tests", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "category",   limit: 255
-    t.string   "content",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer "category_id", limit: 4,        null: false
+    t.text    "content",     limit: 16777215
+    t.integer "score",       limit: 4
   end
+
+  add_index "tests", ["category_id"], name: "fgk_test_category_idx", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -52,4 +63,6 @@ ActiveRecord::Schema.define(version: 20150523135038) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "results", "users", name: "fgk_user_result"
+  add_foreign_key "tests", "categories", name: "fgk_test_category"
 end

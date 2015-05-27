@@ -3,10 +3,42 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .results {
+	color: #626262;
   .jui {
     margin-top: 5em;
     .results_chart {
       height: 30em;
     }
+    .results_chart_captions {
+    	height: 390px;
+    	padding: 3em 0 3em 0;
+    	.results_chart_captions_contents {
+    		height: 100%;
+    		padding-top: 1em;
+    		div {
+	    		height: 100%;
+	    		background-color: #9AEFE1;
+	    		border-radius: 1em;
+	    		padding: 1em;
+	    		margin: 0;
+    		}
+    	}
+    }
+  }
+  .results_board {
+  	margin-bottom: 3em;
+  	border: 3px solid #9AE4CA;
+  	border-radius: 1em;
+  	.results_board_title {
+  		border-bottom: 1px solid #C5C5C5;
+  		padding-bottom: 0.2em;
+  	}
+  	.results_board_list {
+  		font-size: 1.2em;
+  		list-style-type: none;
+  		li {
+  			margin-bottom: 1em;
+  		}
+  	}
   }
 }
