@@ -9,16 +9,23 @@
 </head>
 <body class="<%= params[:controller] %>">
 	<div class="container-fluid">
-		<%= nav_bar fixed: :top, brand: "사이버 폭력 자가진단", responsive: true do %>
+    <%= nav_bar fixed: :top, brand: "정보윤리 5조", responsive: true do %>
 	    <%= menu_group do %>
-	        <%= menu_item "진단 결과", "#" %>
+	        <%= menu_item "진단 결과", results_path %>
 	        <%= menu_item "치료 활동", "#" %>
-	    <% end %>
-      <%= menu_group pull: :right do %>
-          <%= menu_item "회원가입", "#" %>
-          <%= menu_item "로그인", "#" %>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= menu_group pull: :right do %>
+          <%= menu_item "로그아웃", destroy_user_session_path, :method => :delete %>
+        <% end %>
+      <% else %>
+        <%= menu_group pull: :right do %>
+          <%= menu_item "회원가입", new_user_registration_path %>
+          <%= menu_item "로그인", new_user_session_path %>
+        <% end %>
       <% end %>
 		<% end %>
+    <%= render partial: "shared/flash_messages", flash: flash %>
     <%= yield %>
     <div class="footer row">
       <div class="col-md-3 col-md-offset-1 footer_logo">

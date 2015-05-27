@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :results
   resources :exercises
   resources :tests
   # The priority is based upon order of creation: first created -> highest priority.

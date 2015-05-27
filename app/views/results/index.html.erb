@@ -1,0 +1,50 @@
+<script>
+var chart = jui.include("chart.builder");
+var data = [
+    { category : "언어폭력", score : 50 },
+    { category : "불링", score : 20 },
+    { category : "스토킹", score : 10 },
+    { category : "성폭력", score : 30 },
+];
+
+
+$(document).ready(function() {
+  chart(".results_chart", {
+    axis : {
+      x : {
+       type : "range",
+       domain : [0, 100],
+       step : 10,
+       line : true
+     },
+     y : {
+       type : "block",
+       domain : "category",
+       line : true
+     },
+     data : data
+   },
+    brush : {
+     type : "bar",
+     target : "score",
+     display : "max",
+     active : 5,
+     activeEvent : "mouseover",
+     animate : true,
+     colors : [11],
+   },
+   widget : {
+     type : "title",
+     text : "진단 결과 점수",
+     align : "start"
+   }
+  });
+});
+</script>
+<div class="row jui">
+  <div class="col-sm-6 col-sm-offset-1 results_chart" >
+  </div>
+  <div class="col-sm-4 results_chart_captions">
+    <p>여기에는 차트 내용에 대한 각종 설명이 들어갈 예정</p>
+  </div>
+</div>

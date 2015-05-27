@@ -40,6 +40,14 @@ a:hover, a:active, a:visited, a:focus {
   margin: 0;
 }
 
+.alert {
+  position: absolute;
+  top: 50px;
+  z-index: 100;
+  min-width: 80%;
+  left: 10%;
+}
+
 .navbar {
   background-color: #626262;
   border: none;
@@ -49,11 +57,19 @@ a:hover, a:active, a:visited, a:focus {
   .navbar-collapse {
     border: none;
     .nav {
-      a {
-        transition: 0.25s color;
+      li {
+        a {
+          transition: 0.25s color;
+        }
+        a:hover {
+          color: rgb(94,219,91) !important;  
+        }
       }
-      a:hover {
-        color: rgb(94,219,91) !important;  
+      li.active {
+        a {
+          color: rgb(94, 219, 91) !important;
+          background-color: #626262;
+        }
       }
     }
   }
