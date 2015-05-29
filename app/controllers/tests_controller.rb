@@ -4,8 +4,29 @@ class TestsController < ApplicationController
 
   # GET /tests
   # GET /tests.json
+  # tests의 index에서는 한번도 검사를 한 적이 없거나
+  # 현재 주어진 assigned_exercises가 모두 pass일 때에만
+  # 재검사를 허용하도록 한다.
   def index
+    @results = Result.where("user_id = ?", current_user.id)
+    @ass_exercises = AssignedExercise.where("user_id = ? and passed = ?", current_user.id, false)
+
+    if ( @results.count > 0 && @ass_exercises.count > 0 )
+      flash[:alert] = "모든 수행활동을 완료해야 재검사를 할 수 있습니다."
+      redirect_to root_path      
+    end
+
     @tests = Test.all
+  end
+
+  # POST /tests/submit
+  # 제출을 누르면
+  # 일단 기본적으로 점수를 매겨서 그 점수를 results에
+  # 현재 current_user id를 넣어서 넘기고
+  # 그 다음에 점수가 초과된 카테고리에 한해서
+  # 해당하는 exercises들을 assigned_exericses에 넣는다.
+  def submit
+
   end
 
   # GET /tests/1

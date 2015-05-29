@@ -6,7 +6,13 @@ class ResultsController < ApplicationController
   # GET /results.json
   def index
     @results = Result.where("user_id = ?", current_user.id)
-    @result = params[:times] || @results.first
+    
+    if @results.count <= 0
+      flash[:alert] = "결과를 보기에 앞서 검사를 완료하십시오."
+      redirect_to tests_path
+    end
+
+    @result = @results.where("times = ?", params[:times]).first || @results.first
   end
 
   # GET /results/1

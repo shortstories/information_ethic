@@ -12,7 +12,7 @@
     <%= nav_bar fixed: :top, brand: "정보윤리 5조", responsive: true do %>
 	    <%= menu_group do %>
 	        <%= menu_item "진단 결과", results_path %>
-	        <%= menu_item "수행 활동", "#" %>
+	        <%= menu_item "수행 활동", assigned_exercises_path %>
       <% end %>
       <% if user_signed_in? %>
         <%= menu_group pull: :right do %>

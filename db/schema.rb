@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150523135038) do
+ActiveRecord::Schema.define(version: 20150529052207) do
+
+  create_table "assigned_exercises", force: :cascade do |t|
+    t.integer "user_id",     limit: 4,                 null: false
+    t.integer "exercise_id", limit: 4,                 null: false
+    t.boolean "passed",      limit: 1, default: false
+  end
+
+  add_index "assigned_exercises", ["exercise_id"], name: "fgk_ass_exercise", using: :btree
+  add_index "assigned_exercises", ["user_id"], name: "fgk_ass_user", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 50, null: false
@@ -63,6 +72,8 @@ ActiveRecord::Schema.define(version: 20150523135038) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "assigned_exercises", "exercises", name: "fgk_ass_exercise"
+  add_foreign_key "assigned_exercises", "users", name: "fgk_ass_user"
   add_foreign_key "results", "users", name: "fgk_user_result"
   add_foreign_key "tests", "categories", name: "fgk_test_category"
 end
