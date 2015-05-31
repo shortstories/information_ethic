@@ -3,5 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .assigned_exercises_list {
-	padding-top: 50px;
+	padding: 7em 0 3em 0;
+  .assigned_exercises_elements_wrap {
+    h1 {
+      padding-bottom: 1em;
+      border-bottom: 3px solid #DDD;
+    }
+    h2 {
+      padding: 0 1em 0.5em 1em;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .assigned_exercises_elements {
+      font-size: 2em;
+      line-height:1em;
+      margin-bottom:0.5em;
+      .title {
+        border-right: 1px solid #EDEDED;
+      }
+      .check {
+        background-color: white;
+        border: none;
+        .fa {
+          color: #DADADA;
+          transition: color, 0.5s;
+        }
+      }
+      .check.active {
+        .fa {
+          color: #FF6E4C;
+        }
+      }
+      .check:hover {
+        .fa {
+          color: #949494;
+        }
+      }
+    }
+  }
 }

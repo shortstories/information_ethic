@@ -5,13 +5,27 @@
 </script>
 
 <div class="row assigned_exercises_list">
-  <% @assigned_exercises.each do |exercise| %>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contentsModal" data-whatever="@mdo"></button>
-  <% end %>
+  <div class="col-sm-8 col-sm-offset-2 assigned_exercises_elements_wrap">
+    <h1>개인 맞춤형 수행 활동 목록</h1>
+    <% previous_session = -1 %>
+    <% @assigned_exercises.each do |ass_exercise| %>
+    <% if previous_session != ass_exercise.exercise.session %>
+    <h2><%= previous_session = ass_exercise.exercise.session %> 회기 </h2>
+    <% end %>
+    <div class="row assigned_exercises_elements">
+      <div class="col-xs-8 col-xs-offset-1 col-sm-8 col-sm-offset-1 title">
+        <%= ass_exercise.exercise.name %>
+      </div>
+      <div class="col-xs-2 col-sm-2">
+      <button type="button" class="check <%= (ass_exercise.passed == true) ? "active" : "" %>" data-toggle="modal" data-target="#contentsModal" data-title="<%= ass_exercise.exercise.name %>" data-this="<%= ass_exercise.id %>" data-id="<%= ass_exercise.exercise_id %>" <%= (ass_exercise.passed == true) ? "disabled=true" : "" %>><i class="fa fa-check-square"  ></i></button>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="modal fade" id="contentsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -30,8 +44,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <%= button_to "수행 완료", check_assigned_exercises_path, method: "post", params: {id: 0}, class: "btn btn-primary btn-exerciseCheck" %>
       </div>
     </div>
   </div>

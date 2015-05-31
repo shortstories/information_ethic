@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :assigned_exercises
+  post 'assigned_exercises/check' => 'assigned_exercises#check', as: :check_assigned_exercises
   devise_for :users
   resources :results
   resources :exercises
+  get 'exercises/:id/content' => 'exercises#get_exercise'
   resources :tests
   post 'tests/submit' => 'tests#submit', as: :test_submit
   # The priority is based upon order of creation: first created -> highest priority.

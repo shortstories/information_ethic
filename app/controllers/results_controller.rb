@@ -5,14 +5,18 @@ class ResultsController < ApplicationController
   # GET /results
   # GET /results.json
   def index
-    @results = Result.where("user_id = ?", current_user.id)
+    @results = Result.where("user_id = ?", current_user.id).order("times DESC")
     
     if @results.count <= 0
       flash[:alert] = "결과를 보기에 앞서 검사를 완료하십시오."
       redirect_to tests_path
     end
-
-    @result = @results.where("times = ?", params[:times]).first || @results.first
+    
+    if (params[:times])
+      @result = @results.where("times = ?", params[:times]).first
+    else
+      @result = @results.first
+    end
   end
 
   # GET /results/1

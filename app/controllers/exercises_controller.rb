@@ -1,6 +1,16 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
+
+  # GET /exercises/1/content
+  def get_exercise
+    @exercise = Exercise.find(params[:id])
+
+    respond_to do |format|
+      format.json { render json: @exercise.to_json.html_safe }
+    end
+  end
+
   # GET /exercises
   # GET /exercises.json
   def index

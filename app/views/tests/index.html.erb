@@ -1,6 +1,7 @@
 <div class="row tests_title">
   <div class="col-sm-6 col-sm-offset-1"><h1>사이버 폭력 자가진단</h1></div>
 </div>
+<%= form_tag test_submit_path, method: "post", class: "tests_form" do %>
 <div class="row tests_items">
 <% i = 1 %>
 <div class="col-sm-10 col-sm-offset-1 tests_items_wrap">
@@ -11,5 +12,6 @@
 </div>
 </div>
 <div class="row tests_submit_wrap">
-  <input type="button" class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 tests_submit" value="제출"/>
+  <%= submit_tag "제출", :class=>"col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 tests_submit" %>
 </div>
+<% end %>

@@ -4,10 +4,10 @@
     <%= test.content %>
   </div>
   <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 tests_item_inputs">
-    <label>매우 그렇다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="1"></label>
-    <label>그렇다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="2"></label>
-    <label>잘 모르겠다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="3"></label>
-    <label>아니다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="4"></label>
-    <label>전혀 아니다<input type="radio" class="tests_item_inputs_radio radio_last" name="answer[<%= test.category.id %>][<%= test.id %>]" value="5"></label>
+    <label>매우 그렇다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="<%= 4 * test.score %>"></label>
+    <label>그렇다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="<%= 3 * test.score %>"></label>
+    <label>잘 모르겠다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="<%= 2 * test.score %>"></label>
+    <label>아니다<input type="radio" class="tests_item_inputs_radio" name="answer[<%= test.category.id %>][<%= test.id %>]" value="<%= 1 * test.score %>"></label>
+    <label>전혀 아니다<input type="radio" class="tests_item_inputs_radio radio_last" name="answer[<%= test.category.id %>][<%= test.id %>]" value="0"></label>
   </div>
 </div>

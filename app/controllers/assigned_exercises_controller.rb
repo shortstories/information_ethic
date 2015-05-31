@@ -5,7 +5,17 @@ class AssignedExercisesController < ApplicationController
   # GET /assigned_exercises
   # GET /assigned_exercises.json
   def index
-    @assigned_exercises = AssignedExercise.all
+    @assigned_exercises = AssignedExercise.where("user_id = ?", current_user.id).order("exercise_id")
+  end
+
+  # POST /assigned_exercises/check
+  def check
+    @assigned_exercises = AssignedExercise.find(params[:id])
+    @assigned_exercises.passed = true
+    @assigned_exercises.save
+
+    flash[:notice] = "수행 완료되었습니다."
+    redirect_to :back
   end
 
   # GET /assigned_exercises/1

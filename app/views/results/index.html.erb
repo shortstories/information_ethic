@@ -43,7 +43,20 @@ $(document).ready(function() {
      align : "start"
    }
   });
+
+  for (var list in data) {
+
+    if (data[list].score > 50 && data[list].category != "기타") {
+      $('.results_board_list').append('<li>'+ data[list].category + '</li>');
+    }
+  }
+  $('.results_chart_captions select').on('change', onChangeTimes);
 });
+
+var onChangeTimes = function(e) {
+  var target = parseInt($(this).val());
+  location.href = "/results?times=" + target;
+}
 </script>
 <div class="row jui">
   <div class="col-sm-7 col-sm-offset-1 results_chart" >
@@ -54,13 +67,13 @@ $(document).ready(function() {
         <label>검사 차수</label>
         <select>
           <% @results.each do |result| %>
-            <option><%= result.times %>회차</option>
+            <option <%= "selected" if result.id == @result.id %>><%= result.times %>회차</option>
           <% end %>
         </select>
       </div>
     </div>
     <div class="row results_chart_captions_contents">
-      <div class="col-sm-12 results_chart_captions_contents">여기에는 차트 내용에 대한 각종 설명이 들어갈 예정<br>예를 들면 이 점수는 이런 내용이며<br>이 점수는 이런 의미이며<br>이 점수는 이러이러한 의미이다.<br>몇 점 이상이면 빠른 조치가 필요하다 등등..</div>
+      <div class="col-sm-12">기타를 제외한 모든 항목의 점수는 높을수록 사이버 폭력을 가하고 있을 확률이 높음을 의미한다.<br>반대로, 기타는 점수가 높을 수록 좋다.<br>현재는 점수가 50점 이상이면 수행 활동을 할당 하도록 설정되어있다.
     </div>
   </div>
 </div>
@@ -71,10 +84,6 @@ $(document).ready(function() {
     </div>
     <div class="row">
       <ul class="col-sm-10 col-sm-offset-1 results_board_list">
-        <li>사이버 언어폭력</li>
-        <li>사이버 따돌림</li>
-        <li>사이버 명예훼손</li>
-        <li>사이버 성폭력</li>
       </ul>
     </div>
   </div>
