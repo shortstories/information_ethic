@@ -102,8 +102,7 @@ class TestsController < ApplicationController
 
 
         if (times > 1)
-          @assigned_exercises = AssignedExercise.where("user_id = ?", current_user.id);
-          @assigned_exercises.destroy
+          AssignedExercise.destroy_all(user_id: current_user.id)
         end
         # 여기서 부터는 이제 문제를 할당한다.
         # 각 카테고리에 대해서 커트라인 설정
